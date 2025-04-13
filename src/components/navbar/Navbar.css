@@ -1,0 +1,54 @@
+.navbar {
+  height: 13vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(243, 228, 225);
+  background-image: url("../../assets/header.svg");
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar__burger-wrapper {
+  width: 48px;
+  height: 48px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 12;
+}
+.navbar__basket {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(47, 41, 38);
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 1rem;
+}
+.navbar__icon {
+  color: white;
+  font-size: 1.3rem;
+}
+.navbar__cart-count {
+  color: rgb(255, 255, 255);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: rgb(229, 103, 78);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-family: "PT Serif", serif;
+  font-size: 12px;
+}/*# sourceMappingURL=Navbar.css.map */

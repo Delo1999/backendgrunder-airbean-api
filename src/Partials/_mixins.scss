@@ -1,0 +1,28 @@
+//jakob
+@mixin justify-align($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin typography ($font-weight, $font-size, $line-height, $letter-spacing) {
+	font-weight: $font-weight;
+	font-size: $font-size;
+	line-height: $line-height;
+	letter-spacing: $letter-spacing;
+}
+
+@mixin btn-styles(
+  $padding-top,
+  $padding-left,
+  $font-weight,
+  $font-size,
+  $line-height
+) {
+  border-radius: 50px;
+  padding: $padding-top $padding-left;
+  font-family: PT Serif;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+}

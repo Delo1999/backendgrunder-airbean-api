@@ -1,0 +1,106 @@
+@use "../../Partials/mixins" as *;
+@use "../../Partials/variables" as *;
+
+.menu-container {
+  background-color: $primary-background-color;
+  @include justify-align(center, center);
+  min-height: auto; 
+  font-family: $primary-font-family;
+  color: $font-primary-color;
+  height: 100vh;
+}
+
+
+  .menu {
+    width: 350px;
+    padding: 10px;
+    text-align: left;
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      .menu-item {
+        padding: 0.5rem 0;
+
+        .menu-item-header {
+          @include justify-align("", center);
+          font-size: 16px;
+          font-weight: bold;
+
+
+
+          .plus-button {
+            background: $secondary-background-color;
+            color: $font-seconday-color;
+            width: 32px;
+            height: 32px;
+            border-radius: 100%;
+            @include justify-align(center, center);
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 5%;
+          }
+
+          .item-name {
+            font-weight: 700;
+            white-space: nowrap;
+            font-size: 20px;
+          }
+
+          .dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted $font-primary-color;
+            margin-top: 4%;
+          }
+
+          .item-price {
+            font-weight: 700;
+            font-size: 23px;
+          }
+        }
+
+        .menu-item-desc {
+          margin-top: auto;
+          font-size: 12px;
+          font-weight: 400;
+          color: #666;
+          margin-left: 12%;
+        }
+      }
+    }
+  }
+
+.loading {
+  background-color: $primary-background-color;
+  text-align: center;
+  height: 90vh;
+  &__p {
+    padding-top: 3rem;
+  }
+  
+}
+
+.box-price {
+  background-color: $fourth-background-color;
+  margin-top: 1rem;
+  padding: .1rem;
+  border-radius: 1rem;
+  width: 300px;
+  width: auto;
+  top: 100px;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+.diff-price {
+  margin: 1rem;
+  color: $font-primary-color;
+  text-align: center;
+
+}

@@ -1,0 +1,28 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 2rem;
+  background-color: rgb(243, 228, 225);
+  padding: 1rem;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  height: 100vh;
+}
+.about__header {
+  font-size: 2.6rem;
+  font-weight: 700;
+  font-family: "PT Serif", serif;
+  word-wrap: break-word;
+}
+.about__text-bold, .about__text-regular {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+.about img {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1rem;
+}/*# sourceMappingURL=about.css.map */

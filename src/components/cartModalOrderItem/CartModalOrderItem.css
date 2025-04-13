@@ -1,0 +1,56 @@
+.order-item__wrapper {
+  display: flex;
+  justify-content: "";
+  align-items: end;
+}
+.order-item__type {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.order-item__amount {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 2rem;
+  border: 1px solid black;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 0.5rem 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-item__dots {
+  width: 50%;
+  height: 40px;
+  margin-left: 5px;
+  border-bottom: 3px dotted grey;
+}
+.order-item__price {
+  margin-top: 5px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+.order-item__btn {
+  cursor: pointer;
+  padding: 1rem;
+  width: 20px;
+  border: 1px solid black;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-item__select-wrapper {
+  width: 12rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.order-item__trash {
+  display: flex;
+}/*# sourceMappingURL=CartModalOrderItem.css.map */

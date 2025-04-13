@@ -1,0 +1,93 @@
+@use "../../Partials/mixins" as *;
+@use "../../Partials/variables" as *;
+
+.cartModal {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  position: fixed;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+
+  padding: 1rem;
+  @include justify-align(center, "");
+
+  &__inner-container {
+    padding: 1rem;
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 32px;
+    border-radius: 3px;
+    position: relative;
+    margin-top: 6rem;
+    width: 100%;
+    // height: 86%;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  &__header {
+    text-align: center;
+  }
+  &__tip {
+    position: absolute;
+    transform: rotate(45deg);
+
+    top: -7px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  &__wrapper {
+    height: 280px;
+    @include justify-align(end, "");
+    flex-direction: column;
+  }
+  &__price-section {
+    @include justify-align("", end);
+  }
+  &__lower-header {
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 23px;
+  }
+  &__dots {
+    width: 50%;
+    height: 40px;
+    margin-left: 5px;
+    border-bottom: 3px dotted grey;
+  }
+  &__price {
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 23px;
+  }
+  &__price-off {
+    color: red;
+    font-family: $secondary-font-family;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+  &__extra-info-secction {
+    font-family: $primary-font-family;
+    font-weight: 400;
+    font-size: 12px;
+    color: $font-primary-color;
+  }
+  &__btn-wrapper {
+    @include justify-align(center, "");
+    margin-top: 1.5rem;
+  }
+  &__empty {
+    text-align: center;
+    margin-top: 13rem;
+  }
+}

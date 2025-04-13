@@ -1,0 +1,22 @@
+@use "../../Partials/variables" as vars;
+@use "../../Partials/mixins" as mixins;
+
+
+.no__order__status__frame{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color:vars.$primary-background-color;
+
+    .no__order__status__title{
+        @include mixins.typography(600, 3.2rem, 4rem, .3rem);
+        text-align: center;
+        margin-top: 8rem;
+    }
+    .btn{
+        @include mixins.btn-styles(1rem, 3rem, 800, 2rem, 3rem);
+    }
+}

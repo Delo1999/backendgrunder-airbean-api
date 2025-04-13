@@ -1,0 +1,39 @@
+@use "../../Partials/variables.scss" as *;
+@use "../../Partials/mixins.scss" as *;
+
+.about {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 2rem;
+  background-color: $primary-background-color;
+  padding: 1rem;
+  width: 100%; 
+  max-width: 100vw; 
+  box-sizing: border-box;
+  height: 100vh; 
+
+  &__header {
+    font-size: 2.6rem;
+    font-weight: 700;
+    font-family: $secondary-font-family;
+    word-wrap: break-word; 
+  }
+
+  &__text-bold,
+  &__text-regular {
+    width: 100%; 
+    max-width: 100%;
+    overflow-wrap: break-word;
+
+  
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+
+  }
+
+}

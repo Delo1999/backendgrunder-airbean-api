@@ -1,0 +1,6 @@
+@use "../../Partials/variables" as *;
+.footer {
+  height: 73px;
+  background-color: $primary-background-color;
+  background-image: url("../../assets/footer.png");
+}

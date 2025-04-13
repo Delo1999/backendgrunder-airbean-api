@@ -1,0 +1,41 @@
+@use "../../Partials/variables" as *;
+@use "../../Partials/mixins" as *;
+.navbarModal {
+  background-color: $secondary-background-color;
+  @include justify-align(center, "");
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 11;
+
+  &__ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  &__list {
+    color: $font-seconday-color;
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__link {
+    color: $font-seconday-color;
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38.4px;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+  &__border {
+    width: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}

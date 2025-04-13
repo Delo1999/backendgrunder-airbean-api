@@ -1,0 +1,41 @@
+.status-modal {
+    background-color: rgb(229, 103, 78);
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+  }
+  .status-modal__order-number {
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .status-modal__info {
+    font-family: PT Serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43.2px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+  .status-modal__time-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+  }
+  .status-modal__time {
+    font-family: Work Sans;
+    font-weight: 700;
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+  }
+  .status-modal__minutes {
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+  }/*# sourceMappingURL=StatusModal.css.map */

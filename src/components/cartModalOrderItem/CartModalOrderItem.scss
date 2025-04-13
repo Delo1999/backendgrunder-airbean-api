@@ -1,0 +1,55 @@
+@use "../../Partials/mixins" as *;
+@use "../../Partials/variables" as *;
+
+.order-item {
+  &__wrapper {
+    @include justify-align("", end);
+  }
+  &__type {
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__amount {
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    width: 2rem;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 0 .5rem 0 .5rem;
+    @include justify-align(center, center);
+  }
+  &__dots {
+    width: 50%;
+    height: 40px;
+    margin-left: 5px;
+
+    border-bottom: 3px dotted grey;
+  }
+  &__price {
+    margin-top: 5px;
+    font-family: $primary-font-family;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  &__btn {
+    cursor: pointer;
+    padding: 1rem;
+    width: 20px;
+    border: 1px solid black;
+    height: 20px;
+    @include justify-align(center, center);
+  }
+  &__select-wrapper {
+    width: 12rem;
+    // background-color: red;
+    @include justify-align(space-evenly, center);
+  }
+  &__trash {
+    display: flex;
+  }
+}

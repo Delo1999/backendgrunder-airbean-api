@@ -1,0 +1,42 @@
+@use "../../Partials/mixins" as *;
+@use "../../Partials/variables" as *;
+
+.status-modal {
+  background-color: $third-background-color;
+  height: 100vh;
+  @include justify-align(space-evenly, center);
+  flex-direction: column;
+
+  &__order-number {
+    font-family: $primary-font-family;
+    font-size: 16px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  &__info {
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43.2px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $font-seconday-color;
+  }
+  &__time-wrapper {
+    @include justify-align(space-around);
+    align-items: center;
+    width: 17%;
+  }
+  &__time {
+    font-family: $primary-font-family;
+    font-weight: 700;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 1);
+  }
+  &__minutes {
+    font-family: $primary-font-family;
+    font-weight: 400;
+    font-size: 22px;
+    color: $font-seconday-color;
+  }
+}

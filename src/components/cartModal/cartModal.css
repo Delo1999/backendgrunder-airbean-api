@@ -1,0 +1,89 @@
+.cartModal {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  position: fixed;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: "";
+}
+.cartModal__inner-container {
+  padding: 1rem;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 32px;
+  border-radius: 3px;
+  position: relative;
+  margin-top: 6rem;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+}
+.cartModal__header {
+  text-align: center;
+}
+.cartModal__tip {
+  position: absolute;
+  transform: rotate(45deg);
+  top: -7px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background-color: rgb(255, 255, 255);
+}
+.cartModal__wrapper {
+  height: 280px;
+  display: flex;
+  justify-content: end;
+  align-items: "";
+  flex-direction: column;
+}
+.cartModal__price-section {
+  display: flex;
+  justify-content: "";
+  align-items: end;
+}
+.cartModal__lower-header {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 23px;
+}
+.cartModal__dots {
+  width: 50%;
+  height: 40px;
+  margin-left: 5px;
+  border-bottom: 3px dotted grey;
+}
+.cartModal__price {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 23px;
+}
+.cartModal__price-off {
+  color: red;
+  font-family: "PT Serif", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+.cartModal__extra-info-secction {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgb(47, 41, 38);
+}
+.cartModal__btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: "";
+  margin-top: 1.5rem;
+}
+.cartModal__empty {
+  text-align: center;
+  margin-top: 13rem;
+}/*# sourceMappingURL=cartModal.css.map */

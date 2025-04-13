@@ -1,0 +1,40 @@
+.navbarModal {
+  background-color: rgb(47, 41, 38);
+  display: flex;
+  justify-content: center;
+  align-items: "";
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 11;
+}
+.navbarModal__ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.navbarModal__list {
+  color: rgb(255, 255, 255);
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.navbarModal__link {
+  color: rgb(255, 255, 255);
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38.4px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.navbarModal__border {
+  width: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}/*# sourceMappingURL=NavbarModal.css.map */

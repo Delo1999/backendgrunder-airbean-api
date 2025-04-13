@@ -1,0 +1,25 @@
+.no__order__status__frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(243, 228, 225);
+}
+.no__order__status__frame .no__order__status__title {
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 4rem;
+  letter-spacing: 0.3rem;
+  text-align: center;
+  margin-top: 8rem;
+}
+.no__order__status__frame .btn {
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  font-family: PT Serif;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 3rem;
+}/*# sourceMappingURL=NoOrdertStatus.css.map */
