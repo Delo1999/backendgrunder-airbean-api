@@ -28,6 +28,17 @@ const NavbarModal = ({ handleBurgerMenu }: NavbarModalProps) => {
           >
             Vårt kaffe
           </NavLink>
+          <section className="navbarModal__border"></section>
+
+          <li className="navbarModal__list">
+            <NavLink
+              onClick={handleBurgerMenu}
+              to="/profile"
+              className="navbarModal__link"
+            >
+              Min Profil
+            </NavLink>
+          </li>
 
           <section className="navbarModal__border"></section>
         </li>

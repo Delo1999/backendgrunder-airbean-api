@@ -7,6 +7,7 @@ import App from "./App";
 import { MenuList } from "./components/menu/meny";
 import About from "./components/about/about";
 import StatusModal from "./components/statusModal/StatusModal";
+import Profile from "./components/profile/profile";
 // import { ErrorPage } from "./pages/errorPage/ErrorPage";
 
 export const router = createBrowserRouter(
@@ -14,6 +15,7 @@ export const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<MenuList />} />
       <Route path="/about" element={<About />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/status" element={<StatusModal />} />
       {/* <Route path="*" element={<ErrorPage />} /> */}
     </Route>
