@@ -3,6 +3,7 @@ import { db } from "./db.js";
 import { validateUserData } from "./middleware/validateUserData.js";
 import Crypto from "crypto";
 import { validateOrder } from "./middleware/validateOrder.js";
+import { validateOrderHistory } from "./middleware/validateOrderHistory.js";
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -54,6 +55,17 @@ app.post("/api/order", validateOrder, async (req, res) => {
   });
 
   return res.status(200).send({ message: "Order placed successfully" });
+});
+
+app.get("/api/order-history", validateOrderHistory, async (req, res) => {
+  const userId = req.query.userId;
+  const orders = await db.find({ userId });
+
+  if (orders.length === 0) {
+    return res.status(404).send({ message: "No orders found" });
+  }
+
+  return res.status(200).send(orders);
 });
 
 app.listen(port, () => {

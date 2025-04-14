@@ -1,12 +1,13 @@
 import React from "react";
 import "./profile.scss";
+import { Link } from "react-router";
 
 const Profile: React.FC = () => {
   return (
     <div className="profileWrapper">
       <h1>Välkommen till AirBean-familjen!</h1>
       <h2>Logga in nedan för att se din orderhistorik.</h2>
-      <form className="form">
+      <form className="form" method="post" action="/profile">
         <label className="name">Namn</label>
         <input
           type="text"
@@ -21,12 +22,13 @@ const Profile: React.FC = () => {
           placeholder="Lösenord"
           required
         />
+        <button type="submit">submit</button>
       </form>
       <h2>
         Inget konto? Skapa ett{" "}
-        <a className="link" href="/profile">
+        <Link className="link" to="/profile">
           här
-        </a>
+        </Link>
       </h2>
     </div>
   );
