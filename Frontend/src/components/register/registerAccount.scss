@@ -1,0 +1,89 @@
+@use "../../Partials/variables" as *;
+@use "../../Partials/mixins" as *;
+
+.register__wrapper {
+  z-index: 9999;
+  background-color: $secondary-background-color;;
+  width: 100%;
+  height: 100vh;
+  padding-top:1px;
+  &__frame{
+    background-color: $primary-background-color;
+    width: 90%;
+    height: 90%;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top:5%;
+    @include justify-align(center,center);
+    flex-direction: column;
+
+    &__title{
+      @include typography(800,2.5rem, 2.5rem, .1rem);
+      text-align: center; 
+      width: 95%;
+      padding-top:.5rem;
+
+    }
+    &__subtitle{
+      @include typography(300, 1.5rem, 1.5rem, 0rem);
+      font-family: $primary-font-family;
+      text-align: center;
+      width: 85%;
+      padding-top: 1rem;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    &__form{
+      @include justify-align(center, flex-start);
+      flex-direction:column;
+      flex-wrap: wrap;
+      gap:.5rem;
+      width: 90%;
+      padding-top: 1.5rem;
+      margin-left:auto;
+      margin-right:auto;
+      @include typography(300,1.5rem, 1.2rem, 0rem);
+      font-family:$primary-font-family;
+      
+      &__label{
+       padding-top: 1rem;
+      }
+
+      &__input{
+        width: 100%;
+        height: 3rem;
+    
+        line-height: 1.5rem;
+        padding-top: 1.5rem;
+        padding-bottom: 0;
+        border:1px solid $secondary-background-color;
+        border-radius: .3rem;
+        &::placeholder{
+          font-size:1.5rem;  
+          padding-left:.2rem; 
+        }
+      }
+
+      &__btn{
+        @include btn-styles(.5rem, 1rem, 600, 1.5rem,3rem);
+        width: 80%;
+        cursor:pointer;
+        background-color: $secondary-background-color;
+        color:$font-seconday-color;
+        font-family: $primary-font-family;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:2.5rem;
+        padding-top: .5rem;
+      }
+    }
+
+    &__register{
+      padding-top:2rem;
+      @include typography(400, 1.5rem, 1.2rem, 0rem);
+      padding-bottom: 4rem;
+    }
+
+  }
+}
