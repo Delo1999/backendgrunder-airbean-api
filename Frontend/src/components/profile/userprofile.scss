@@ -1,0 +1,57 @@
+@use "../../Partials/variables" as *;
+@use "../../Partials/mixins" as *;
+
+.profile__container {
+//   z-index: 9999;
+  background-color: $primary-background-color;
+  width: 100%;
+  height: 100%;
+  padding-top:1px;
+  @include typography(400, 1.2rem, 1.5rem, 0rem);
+  font-family: $primary-font-family;
+  &__frame{
+    padding-top: 1rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    @include justify-align(center,center);
+    flex-direction: column;
+    &__title{
+        text-align: center;
+    }
+    &__username{
+        padding-top: .8rem;
+    }
+
+    
+    &__btn{
+        @include btn-styles(0.5rem, 1rem, 400, 1.5rem,2rem);
+        width: 80%;
+        cursor:pointer;
+        background-color: $secondary-background-color;
+        color:$font-seconday-color;
+        font-family: $primary-font-family;
+        margin-top: 1rem;
+      }
+    }
+  &__order{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+    &__title{
+        @include typography(800, 1.5rem, 1.5rem, 0rem);
+        text-align: center; 
+        width: 95%;
+        padding-top:.5rem;
+        padding-bottom: .5rem;
+    }
+    &__item{
+        @include justify-align(center, flex-start);
+        flex-direction:column;
+    }
+  }  
+
+  }
+
+
