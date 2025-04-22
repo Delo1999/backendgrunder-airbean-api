@@ -9,81 +9,76 @@ import { Item } from "./types/types";
 import HomePage from "./pages/landingPage/landing";
 
 function App() {
-  // usestage för o hantera true & false för menyn
+  // State för hantera menu toggle, cart modal, cart items och home page view
   const [handleToggle, setHandleToggle] = useState(false);
   const [cartModal, setCartModal] = useState(false);
   const [cart, setCart] = useState<Item[]>([]);
   const [home, setHome] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null); 
+  const [orderNr, setOrderNr] = useState<string | null>(null);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+
+    // hämta userId från localStorage när komponenten mountas
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId && !userId) {
+      setUserId(storedUserId); // Sett userId om det inte redan är satt
+    }
+
     setCartModal(false);
     setHandleToggle(false);
-  }, [location]);
+  }, [location, userId]);
 
-  //togglar menyn false true
+  // hantera toggle av burger menu
   const handleBurgerMenu = () => {
     setHandleToggle((prev) => {
-      console.log(handleToggle);
       setCartModal(false);
       return !prev;
     });
   };
-  //togglar cartModal false true
+
+  // hantera toggle av cart modal
   const handleCartModal = () => {
-    setCartModal((prev) => {
-      return !prev;
-    });
+    setCartModal((prev) => !prev);
   };
 
-  //fixade med outlet med och skicka props via useoutletcontext på menupage
-
+  // updatera cart med item
   const handleUpdateCart = (item: Item) => {
-    //kollar om obj finns i array:
-    const itemExists = cart.find((Item) => {
-      return Item.title === item.title;
-    });
+    const itemExists = cart.find((Item) => Item.title === item.title);
     if (itemExists) {
-      console.log("item exists");
-
-      console.log("uppdaterad cartt", cart);
-
       setCart((prevCart) =>
         prevCart.map((Item) =>
           Item.title === item.title
-            ? { ...Item, antal: Item.antal + 1 } // Rätt sätt att uppdatera antal
+            ? { ...Item, antal: Item.antal + 1 }
             : Item
         )
       );
     } else {
-      console.log("item NOT! exists");
-
-      // Om objektet inte finns, lägg till det med antal: 1
       setCart((prevCart) => [...prevCart, { ...item, antal: 1 }]);
     }
   };
 
-  console.log("uppdatterad meny", cart);
-
-  const [orderNr, setOrderNr] = useState();
-
+  // Post order request
   const postRequest = async () => {
-    console.log("cart:", cart);
+    if (!userId) {
+      console.error("User ID is required to place an order");
+      return;
+    }
 
     const postCart = {
       details: {
-        order: cart.map((item) => {
-          return {
-            name: item.title,
-            price: item.price,
-          };
-        }),
+        userId,
+        order: cart.map((item) => ({
+          name: item.title,
+          price: item.price,
+        })),
       },
     };
-    console.log("postcard", postCart);
 
-    const url = "https://airbean-9pcyw.ondigitalocean.app/api/beans/order";
+    const url = "http://localhost:8000/api/order"; 
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -93,23 +88,22 @@ function App() {
         body: JSON.stringify(postCart),
       });
 
-      // Vänta på att servern svarar och returnera svaret i JSON-format
       const data = await response.json();
 
-      setOrderNr(data.orderNr);
-      console.log("ordernr!!!", data.orderNr);
-
-      if (!response.ok) {
-        // Hantera eventuella fel här om svaret inte var ok
-        throw new Error(`Error: ${data.message || "Something went wrong"}`);
+      if (response.ok) {
+        setOrderNr(data.orderId); 
+        console.log("Order placed successfully:", data);
+        setCart([]);
+        navigate("/status");
+      } else {
+        throw new Error(data.message || "Something went wrong");
       }
-
-      console.log("User created successfully:", data); // Hantera den skapade användaren
     } catch (error) {
-      console.error("Error creating user:", error); // Hantera fel om något går fel
+      console.error("Error creating order:", error);
     }
   };
 
+ 
   const increaseQuantity = (id: string) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -118,6 +112,7 @@ function App() {
     );
   };
 
+  
   const decreaseQuantity = (id: string) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -128,15 +123,11 @@ function App() {
     );
   };
 
+ 
   const deleteItem = (id: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  const handleClick = () => {
-    setHome(false);
-  };
-
-  const navigate = useNavigate();
 
   return (
     <>
@@ -163,10 +154,11 @@ function App() {
         )}
 
         {handleToggle && <NavbarModal handleBurgerMenu={handleBurgerMenu} />}
-        {home && <HomePage handleClick={handleClick} home={home} />}
-        <Outlet
-          context={{ handleUpdateCart: handleUpdateCart, orderNr: orderNr }}
-        />
+        
+        {home && <HomePage handleClick={() => setHome(false)} />}
+        
+        <Outlet context={{ handleUpdateCart, orderNr }} />
+
         {location.pathname !== "/status" && !home && <Footer />}
       </section>
     </>

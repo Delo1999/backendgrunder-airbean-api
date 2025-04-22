@@ -1,3 +1,5 @@
+// NOT IN USE
+// This component is not in use. It was created for a registration page but is not currently being used in the application.
 import React, { useState } from "react";
 import "./registerAccount.scss";
 import { Link } from "react-router";
@@ -23,7 +25,7 @@ const Register: React.FC = () => {
 
       if (response.ok) {
         setMessage("Login successful!");
-        console.log("User ID:", data.userId); // Handle user ID as needed
+        console.log("User ID:", data.userId);
       } else {
         setMessage(data.message || "Login failed");
       }

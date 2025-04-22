@@ -1,26 +1,45 @@
-import { menu } from "../constants/menu.js";
+import { menuDB } from "../db.js";
 
-export function validateOrder(req, res, next) {
-  const order = req.body.details.order;
+export async function validateOrder(req, res, next) {
+    const { details } = req.body;
+    
+    if (!details || !details.userId || !details.order) {
+        return res.status(400).json({ message: "Invalid order format" });
+    }
 
-  const isEveryProductInMenu = order.every((product) => {
-    return menu.some((menuItem) => menuItem.title === product.name);
-  });
+    try {
+        // Checka så att produkterna finns i menyn
+        const menuCheck = await Promise.all(
+            details.order.map(async (product) => {
+                const menuItem = await menuDB.findOne({ 
+                    title: product.name 
+                });
+                return !!menuItem;
+            })
+        );
 
-  if (!isEveryProductInMenu) {
-    return res
-      .status(400)
-      .send({ message: "Some products are not in the menu" });
-  }
+        if (menuCheck.includes(false)) {
+            return res.status(400).json({ message: "Some products not found in menu" });
+        }
 
-  const isEveryPriceCorrect = order.every((product) => {
-    const menuItem = menu.find((menuItem) => menuItem.title === product.name);
-    return menuItem && menuItem.price === product.price;
-  });
+        // checka så pris stämmer.
+        const priceCheck = await Promise.all(
+            details.order.map(async (product) => {
+                const menuItem = await menuDB.findOne({ 
+                    title: product.name, 
+                    price: product.price
+                });
+                return !!menuItem;
+            })
+        );
 
-  if (!isEveryPriceCorrect) {
-    return res.status(400).send({ message: "Some prices are incorrect" });
-  }
+        if (priceCheck.includes(false)) {
+            return res.status(400).json({ message: "Price mismatch for some items" });
+        }
 
-  next();
+        next();
+    } catch (error) {
+        console.error("Order validation error:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
 }

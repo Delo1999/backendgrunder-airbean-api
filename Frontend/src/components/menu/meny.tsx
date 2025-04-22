@@ -24,7 +24,7 @@ export const MenuList: React.FC = () => {
     const fetchMenu = async () => {
       try {
         const response = await fetch(
-          "https://airbean-9pcyw.ondigitalocean.app/api/beans"
+          "http://localhost:8000/api/menu",
         );
         if (!response.ok) {
           throw new Error(`HTTP-fel! Status: ${response.status}`);

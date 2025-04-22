@@ -2,7 +2,7 @@ import "./Landing.css";
 
 type HomePageProps = {
   handleClick: () => void;
-  home: boolean;
+  home?: boolean; // optional på home.
 };
 
 const HomePage: React.FC<HomePageProps> = ({ handleClick, home }) => {

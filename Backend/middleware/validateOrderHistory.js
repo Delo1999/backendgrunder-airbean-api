@@ -1,8 +1,8 @@
 export function validateOrderHistory(req, res, next) {
-  const { orderId } = req.query;
+  const { userId } = req.query;
 
-  if (!orderId) {
-    return res.status(400).send({ message: "Order ID is required" });
+  if (!userId) {
+    return res.status(400).json({ message: "User ID is required" });
   }
 
   next();

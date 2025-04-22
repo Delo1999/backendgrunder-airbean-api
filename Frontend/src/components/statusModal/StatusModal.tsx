@@ -5,62 +5,85 @@ import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router";
 
 interface OutletContextType {
-  orderNr: string;
+  orderNr: string | null;
 }
+
+interface OrderStatus {
+  eta: string;
+  status: string;
+}
+
 const StatusModal = () => {
   const { orderNr } = useOutletContext<OutletContextType>();
   const nav = useNavigate();
 
-  const [eta, setEta] = useState<{ eta: number } | null>(null);
+  const [eta, setEta] = useState<string | null>(null);
+  const [status, setStatus] = useState<string | null>(null);
   const [emptyOrder, setEmptyOrder] = useState(false);
-  console.log("order", orderNr);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!orderNr) {
+        setEmptyOrder(true);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await fetch(
-          `https://airbean-9pcyw.ondigitalocean.app/api/beans/order/status/${orderNr}`
+          `http://localhost:8000/api/order/status/${orderNr}`
         );
 
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Failed to fetch order status");
         }
 
-        const data = await response.json(); // Konverterar svaret till JSON
+        const data: OrderStatus = await response.json();
 
         if (!data || !data.eta) {
           setEmptyOrder(true);
           return;
         }
 
-        setEta(data);
+        setEta(data.eta);
+        setStatus(data.status);
         setEmptyOrder(false);
-        console.log("eta", data);
       } catch (error) {
-        console.error("Error:", error); // Hantera eventuella fel
+        console.error("Error:", error);
+        setError(error instanceof Error ? error.message : "Unknown error");
         setEmptyOrder(true);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData(); // Anropa funktionen för att hämta data
+    fetchData();
   }, [orderNr]);
 
-  if (emptyOrder) {
+  if (loading) {
+    return (
+      <section className="status-modal">
+        <p>Loading order status...</p>
+      </section>
+    );
+  }
+
+  if (emptyOrder || error) {
     return (
       <section className="status-modal">
         <p className="status-modal__order-number">
-          Var god och gör en beställning i vår shop.
+          {error || "Please place an order in our shop."}
         </p>
-        <h1 className="status-modal__info">Du har ingen aktiv beställning</h1>
+        <h1 className="status-modal__info">No active order found</h1>
 
         <Button
-          onClick={() => {
-            nav("/");
-          }}
+          onClick={() => nav("/")}
           bgColor={"rgba(255, 255, 255, 1)"}
           color={"rgba(47, 41, 38, 1)"}
         >
-          Ok, cool!
+          Back to Menu
         </Button>
       </section>
     );
@@ -68,25 +91,25 @@ const StatusModal = () => {
 
   return (
     <section className="status-modal">
-      <p className="status-modal__order-number">Ordernummer {orderNr}</p>
+      <p className="status-modal__order-number">Order #{orderNr}</p>
       <img className="status-modal__img" src={orderstatusimage} alt="drone" />
       <h1 className="status-modal__info">
-        Din beställning <br /> är på väg!
+        Your order <br /> is on its way!
       </h1>
       <section className="status-modal__time-wrapper">
-        <span className="status-modal__time">{eta && eta.eta}</span>
-
-        <p className="status-modal__minutes">minuter</p>
+        <span className="status-modal__time">{eta}</span>
+        <p className="status-modal__minutes">minutes</p>
+      </section>
+      <section className="status-modal__status-wrapper">
+        <p>Status: {status}</p>
       </section>
 
       <Button
-        onClick={() => {
-          nav("/");
-        }}
+        onClick={() => nav("/")}
         bgColor={"rgba(255, 255, 255, 1)"}
         color={"rgba(47, 41, 38, 1)"}
       >
-        Ok, cool!
+        Back to Menu
       </Button>
     </section>
   );

@@ -1,12 +1,12 @@
 import { NavLink } from "react-router";
 import "./NavbarModal.css";
-// import to from "./../../../node_modules/colorjs.io/src/to";
+
 interface NavbarModalProps {
   handleBurgerMenu: () => void;
 }
 const NavbarModal = ({ handleBurgerMenu }: NavbarModalProps) => {
   return (
-    // måste få de o sttänga när de trycker på link
+    // måste få de o stänga när de trycker på link
     <section className="navbarModal">
       <ul className="navbarModal__ul">
         <li className="navbarModal__list">
