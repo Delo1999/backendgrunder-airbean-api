@@ -49,6 +49,10 @@
     &__item{
         @include justify-align(center, flex-start);
         flex-direction:column;
+        margin-top: 1rem;
+        background-color: $font-seconday-color;
+        padding:.5rem .5rem;
+        border-radius: .5rem;
     }
   }  
 
