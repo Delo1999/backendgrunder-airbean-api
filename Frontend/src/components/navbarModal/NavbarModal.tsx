@@ -29,7 +29,7 @@ const NavbarModal = ({ handleBurgerMenu }: NavbarModalProps) => {
             Vårt kaffe
           </NavLink>
           <section className="navbarModal__border"></section>
-
+        </li>
           <li className="navbarModal__list">
             <NavLink
               onClick={handleBurgerMenu}
@@ -41,7 +41,6 @@ const NavbarModal = ({ handleBurgerMenu }: NavbarModalProps) => {
           </li>
 
           <section className="navbarModal__border"></section>
-        </li>
         <li className="navbarModal__list">
           <NavLink
             onClick={handleBurgerMenu}
